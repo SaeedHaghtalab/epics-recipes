@@ -1,0 +1,9 @@
+epics_base:
+  - 3.16.2
+  - 7.0.3
+epics_asyn:
+  - 4.36
+epics_calc:
+  - 3.7.3
+epics_stream:
+  - 2.8.9

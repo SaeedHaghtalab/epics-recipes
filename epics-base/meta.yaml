@@ -1,0 +1,43 @@
+{% set pkg_name = "epics-base" %}
+{% set pkg_ver = epics_base %}
+
+package:
+  name: {{ pkg_name }}
+  version: {{ pkg_ver }}
+
+source:
+  url: https://epics.anl.gov/download/base/base-{{ pkg_ver }}.tar.gz
+  patches:
+    - patch/site/CONFIG_COMMON_permissions.patch
+
+build:
+  number: 0
+  run_exports:
+    - {{ pin_subpackage(pkg_name, max_pin='x.x.x') }}
+      
+requirements:
+  build:
+    - make
+    - perl
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - python # [win]
+    - m2w64-make # [win]
+    - patch # [win]
+  host:
+    - readline
+  run:
+    - perl
+
+test:
+  commands:
+    - caget -h
+
+about:
+  home: http://www.aps.anl.gov/epics
+  license: EPICS Open License (https://epics.anl.gov/license/open.php)
+
+extra:
+  maintainers:
+   - Saeed Haghtalab <saeed.haghtalab@outlook.com>
+   

@@ -1,0 +1,19 @@
+diff --git a/configure/CONFIG_COMMON b/configure/CONFIG_COMMON_patch
+index d3a6696..47c52fe 100644
+--- a/configure/CONFIG_COMMON
++++ b/configure/CONFIG_COMMON_patch
+@@ -399,10 +399,10 @@ INSTALL_LIB_INSTALLS = $(addprefix $(INSTALL_LIB)/,$(notdir $(LIB_INSTALLS)))
+ 
+ #---------------------------------------------------------------
+ # Installed file permissions
+-BIN_PERMISSIONS = 555
+-LIB_PERMISSIONS = 444
+-SHRLIB_PERMISSIONS = 555
+-INSTALL_PERMISSIONS = 444
++BIN_PERMISSIONS = 755
++LIB_PERMISSIONS = 644
++SHRLIB_PERMISSIONS = 755
++INSTALL_PERMISSIONS = 644
+ 
+ #---------------------------------------------------------------
+ #

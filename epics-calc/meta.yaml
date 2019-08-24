@@ -1,0 +1,28 @@
+{% set pkg_name = "epics-calc" %}
+{% set pkg_ver = epics_calc %}
+
+package:
+  name: {{ pkg_name }}
+  version: {{ pkg_ver }}
+
+source:
+  git_url: https://github.com/epics-modules/calc.git
+  git_rev: R{{ pkg_ver | replace(".","-") }}
+
+build:
+  number: 0
+  run_exports:
+    - {{ pin_subpackage(pkg_name, max_pin='x.x.x') }}
+
+requirements:
+  build:
+    - epics-base {{ epics_base }}
+
+about:
+  home: http://www.aps.anl.gov/epics
+  license: EPICS Open License (https://epics.anl.gov/license/open.php)
+
+extra:
+  maintainers:
+   - Saeed Haghtalab <saeed.haghtalab@outlook.com>
+   
