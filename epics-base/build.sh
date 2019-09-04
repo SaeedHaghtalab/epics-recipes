@@ -19,13 +19,21 @@ if [ "$GNU_DIR" != "/usr" ]; then
     echo "GNU_DIR="$GNU_DIR >> configure/CONFIG_COMMON
 fi
 
+# Make with full power!
 make -j${CPU_COUNT}
 
-# link epics bin and lib to environment
-ln -s ${EPICS_BASE}/bin/${EPICS_HOST_ARCH}/*       ${PREFIX}/bin
-ln -s ${EPICS_BASE}/lib/${EPICS_HOST_ARCH}/lib*so* ${PREFIX}/lib
+# Link epics/bin and lib to environment bin so they are in $PATH now.
 
-# deal with env export
+ln -sv ${EPICS_BASE}/lib/${EPICS_HOST_ARCH}/lib*so* ${PREFIX}/lib
+# Perl files use relative path that results in error if they are not
+# called from right location.
+# For now, just link files without extenstion until we find better solution.
+for f in $(ls --ignore='*.pl' ${EPICS_BASE}/bin/${EPICS_HOST_ARCH})
+do
+    ln -sv ${EPICS_BASE}/bin/${EPICS_HOST_ARCH}/$f ${PREFIX}/bin
+done
+
+# Deal with environment exports
 mkdir -p $PREFIX/etc/conda/activate.d
 mkdir -p $PREFIX/etc/conda/deactivate.d
 
