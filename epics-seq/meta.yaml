@@ -1,0 +1,31 @@
+{% set pkg_name = "epics-seq" %}
+{% set pkg_ver = epics_seq %}
+
+package:
+  name: {{ pkg_name }}
+  version: {{ pkg_ver }}
+
+source:
+  url: https://www-csr.bessy.de/control/SoftDist/sequencer/releases/seq-{{ pkg_ver }}.tar.gz
+
+build:
+  number: 0
+  run_exports:
+    - {{ pin_subpackage(pkg_name, max_pin='x.x.x') }}
+
+requirements:
+  # re2c is available in conda-forge. You might need '-c conda-forge' to build the package.
+  host:
+    - epics-base {{ epics_base }}
+    - re2c
+  run:
+    - re2c
+
+about:
+  home: http://www.aps.anl.gov/epics
+  license: EPICS Open License (https://epics.anl.gov/license/open.php)
+
+extra:
+  maintainers:
+   - Saeed Haghtalab <saeed.haghtalab@outlook.com>
+   
