@@ -1,9 +1,9 @@
 #!/bin/bash
 
-export ASYN_PATH=$PREFIX/epics/asyn
-install -d $ASYN_PATH
+MODULE_PATH=$PREFIX/epics/${PKG_NAME#epics-}
+install -d $MODULE_PATH
 
-echo "INSTALL_LOCATION=$ASYN_PATH" >> configure/CONFIG_SITE
+echo "INSTALL_LOCATION=$MODULE_PATH" >> configure/CONFIG_SITE
 
 sed -i "s|^EPICS_BASE=.*|EPICS_BASE=$PREFIX/epics/base|" configure/RELEASE
 sed -i "s|^IPAC|# IPAC|"                                 configure/RELEASE

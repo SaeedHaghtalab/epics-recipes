@@ -1,9 +1,9 @@
 #!/bin/bash
 
-export CALC_PATH=$PREFIX/epics/calc
-install -d $CALC_PATH
+MODULE_PATH=$PREFIX/epics/${PKG_NAME#epics-}
+install -d $MODULE_PATH
 
-echo "INSTALL_LOCATION=$CALC_PATH"   >              configure/CONFIG_SITE.local
+echo "INSTALL_LOCATION=$MODULE_PATH" >              configure/CONFIG_SITE.local
 echo "EPICS_BASE=$PREFIX/epics/base" >              configure/RELEASE.local
 
 sed -i "s|^SUPPORT|# SUPPORT|"                      configure/RELEASE

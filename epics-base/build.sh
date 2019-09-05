@@ -1,7 +1,6 @@
 #!/bin/bash
 
-BASE_PATH=epics/base
-EPICS_BASE="$PREFIX/$BASE_PATH"
+EPICS_BASE="$PREFIX/epics/base"
 EPICS_HOST_ARCH="$(startup/EpicsHostArch)"
 
 install -d $EPICS_BASE
@@ -23,7 +22,6 @@ fi
 make -j${CPU_COUNT}
 
 # Link epics/bin and lib to environment bin so they are in $PATH now.
-
 ln -sv ${EPICS_BASE}/lib/${EPICS_HOST_ARCH}/lib*so* ${PREFIX}/lib
 # Perl files use relative path that results in error if they are not
 # called from right location.
@@ -34,26 +32,24 @@ do
 done
 
 # Deal with environment exports
-mkdir -p $PREFIX/etc/conda/activate.d
-mkdir -p $PREFIX/etc/conda/deactivate.d
+ACTIVATE_D=$PREFIX/etc/conda/activate.d
+DEACTIVATE_D=$PREFIX/etc/conda/deactivate.d
 
-ACTIVATE=$PREFIX/etc/conda/activate.d/epics_base.sh
-DEACTIVATE=$PREFIX/etc/conda/deactivate.d/epics_base.sh
+mkdir -p $ACTIVATE_D
+mkdir -p $DEACTIVATE_D
 
 # set up
-cat << EOF > $ACTIVATE
+cat << EOF > $ACTIVATE_D/epics-base.sh
 #!/bin/env bash
-export EPICS_BASE=\$CONDA_PREFIX/$BASE_PATH
+export EPICS_PATH=\$CONDA_PREFIX/epics
+export EPICS_BASE=\$EPICS_PATH/base
 export EPICS_HOST_ARCH=$EPICS_HOST_ARCH
 EOF
 
 # tear down
-cat << EOF > $DEACTIVATE
+cat << EOF > $DEACTIVATE_D/epics-base.sh
 #!/bin/env bash
+unset EPICS_PATH
 unset EPICS_BASE
 unset EPICS_HOST_ARCH
 EOF
-
-# clean up after self
-unset ACTIVATE
-unset DEACTIVATE
