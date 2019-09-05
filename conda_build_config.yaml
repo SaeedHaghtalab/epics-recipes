@@ -13,3 +13,5 @@ epics_busy:
   - 1.7.2
 epics_motor:
   - 7.1
+epics_sscan:
+  - 2.11.3

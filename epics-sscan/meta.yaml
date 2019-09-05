@@ -1,0 +1,28 @@
+{% set pkg_name = "epics-sscan" %}
+{% set pkg_ver = epics_sscan %}
+
+package:
+  name: {{ pkg_name }}
+  version: {{ pkg_ver }}
+
+source:
+  url: https://github.com/epics-modules/sscan/archive/R{{ pkg_ver | replace(".","-") }}.tar.gz
+
+build:
+  number: 0
+  run_exports:
+    - {{ pin_subpackage(pkg_name, max_pin='x.x.x') }}
+
+requirements:
+  host:
+    - epics-base {{ epics_base }}
+    - epics-seq {{ epics_seq }}
+
+about:
+  home: http://www.aps.anl.gov/epics
+  license: EPICS Open License (https://epics.anl.gov/license/open.php)
+
+extra:
+  maintainers:
+   - Saeed Haghtalab <saeed.haghtalab@outlook.com>
+   
