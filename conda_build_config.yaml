@@ -11,3 +11,5 @@ epics_seq:
   - 2.2.6
 epics_busy:
   - 1.7.2
+epics_motor:
+  - 7.1
