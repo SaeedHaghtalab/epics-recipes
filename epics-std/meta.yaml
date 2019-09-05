@@ -1,0 +1,34 @@
+{% set pkg_name = "epics-std" %}
+{% set pkg_ver = epics_std %}
+
+package:
+  name: {{ pkg_name }}
+  version: {{ pkg_ver }}
+
+source:
+  url: https://github.com/epics-modules/std/archive/R{{ pkg_ver | replace(".","-") }}.tar.gz
+
+build:
+  number: 0
+  run_exports:
+    - {{ pin_subpackage(pkg_name, max_pin='x.x.x') }}
+
+requirements:
+  host:
+    - epics-base {{ epics_base }}
+    - epics-asyn {{ epics_asyn }}
+    - epics-seq {{ epics_seq }}
+  run:
+    - epics-calc
+    - epics-busy
+    - epics-sscan
+    - epics-motor
+
+about:
+  home: http://www.aps.anl.gov/epics
+  license: EPICS Open License (https://epics.anl.gov/license/open.php)
+
+extra:
+  maintainers:
+   - Saeed Haghtalab <saeed.haghtalab@outlook.com>
+   

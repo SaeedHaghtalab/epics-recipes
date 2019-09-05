@@ -15,3 +15,5 @@ epics_motor:
   - 7.1
 epics_sscan:
   - 2.11.3
+epics_std:
+  - 3.6
