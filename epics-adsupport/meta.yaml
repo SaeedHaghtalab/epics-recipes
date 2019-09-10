@@ -1,12 +1,12 @@
-{% set pkg_name = "epics-stream" %}
-{% set pkg_ver = epics_stream %}
+{% set pkg_name = "epics-adsupport" %}
+{% set pkg_ver = epics_adsupport %}
 
 package:
   name: {{ pkg_name }}
   version: {{ pkg_ver }}
 
 source:
-  url: https://github.com/paulscherrerinstitute/StreamDevice/archive/{{ pkg_ver }}.tar.gz
+  url: https://github.com/areaDetector/ADSupport/archive/R{{ pkg_ver | replace(".","-") }}.tar.gz
 
 build:
   number: 0
@@ -16,11 +16,7 @@ build:
 requirements:
   host:
     - epics-base {{ epics_base }}
-    - epics-asyn {{ epics_asyn }}
-    - epics-calc {{ epics_calc }}
-    - pcre
-  run:
-    - pcre
+    - bzip2   # needed if WITH_GRAPHICSMAGICK=YES
 
 about:
   home: http://www.aps.anl.gov/epics
@@ -29,5 +25,4 @@ about:
 extra:
   maintainers:
    - Saeed Haghtalab <saeed.haghtalab@outlook.com>
-
    

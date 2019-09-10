@@ -1,0 +1,4 @@
+ASYN=${PREFIX}/epics/asyn
+EPICS_BASE=${PREFIX}/epics/base
+SUPPORT=
+AUTOSAVE=

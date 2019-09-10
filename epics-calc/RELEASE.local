@@ -1,0 +1,3 @@
+EPICS_BASE=${PREFIX}/epics/base
+SSCAN=
+SUPPORT=

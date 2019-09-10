@@ -1,2 +1,2 @@
 # epics-recipes
-conda recipes to build epics standard 
+conda recipes to build standard epics modules

@@ -1,0 +1,12 @@
+alias:
+    base:   EPICS_BASE
+    asyn:   ASYN
+    calc:   CALC
+    std:    STD
+    busy:   BUSY
+    motor:  MOTOR
+    seq:    SNCSEQ
+    stream: STREAM
+prefix: epics
+seperator: "-"
+install_location: $PREFIX/epics

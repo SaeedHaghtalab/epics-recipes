@@ -1,3 +1,8 @@
+# channel_sources:
+#   - conda-forge,defaults
+# channel_targets:
+#   - conda-forge,defaults
+
 epics_base:
   - 3.15.6
 #  - 7.0.3
@@ -6,7 +11,7 @@ epics_asyn:
 epics_calc:
   - 3.7.3
 epics_stream:
-  - 2.8.9
+  - 2.8.10
 epics_seq:
   - 2.2.6
 epics_busy:
@@ -17,3 +22,5 @@ epics_sscan:
   - 2.11.3
 epics_std:
   - 3.6
+epics_adsupport:
+  - 1.9

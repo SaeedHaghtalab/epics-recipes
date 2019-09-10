@@ -1,0 +1,4 @@
+EPICS_BASE=${PREFIX}/epics/base
+ASYN=${PREFIX}/epics/asyn
+SNCSEQ=${PREFIX}/epics/seq
+SUPPORT=

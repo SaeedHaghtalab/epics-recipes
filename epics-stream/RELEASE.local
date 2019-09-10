@@ -1,0 +1,7 @@
+EPICS_BASE=${PREFIX}/epics/base
+INSTALL_LOCATION_APP=${PREFIX}/epics/stream
+ASYN=${PREFIX}/epics/asyn
+CALC=${PREFIX}/epics/calc
+PCRE_INCLUDE=${PREFIX}/include
+PCRE_LIB=${PREFIX}/lib
+PCRE=

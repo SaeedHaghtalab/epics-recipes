@@ -18,11 +18,12 @@ requirements:
     - epics-base {{ epics_base }}
     - epics-asyn {{ epics_asyn }}
     - epics-seq {{ epics_seq }}
-  run:
-    - epics-calc
-    - epics-busy
-    - epics-sscan
-    - epics-motor
+      # std has only run-time dependancy to following modules but since conda needs to identify
+      # them during the build time, I included them here.
+    - epics-calc {{ epics_calc}}
+    - epics-busy {{ epics_busy}}
+    - epics-sscan {{ epics_sscan }}
+    - epics-motor {{ epics_motor }}
 
 about:
   home: http://www.aps.anl.gov/epics

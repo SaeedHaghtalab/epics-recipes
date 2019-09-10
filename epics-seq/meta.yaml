@@ -15,11 +15,13 @@ build:
 
 requirements:
   # re2c is available in conda-forge. You might need '-c conda-forge' to build the package.
+  # Sep 8 : By specifying the channel explicitly, we might not have to use '-c conda-forge' anymore
+  # https://github.com/conda/conda/issues/988
   host:
     - epics-base {{ epics_base }}
-    - re2c
+    - re2c [conda-forge]
   run:
-    - re2c
+    - re2c [conda-forge]
 
 about:
   home: http://www.aps.anl.gov/epics

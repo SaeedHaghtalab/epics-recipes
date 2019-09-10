@@ -6,8 +6,7 @@ package:
   version: {{ pkg_ver }}
 
 source:
-  git_url: https://github.com/epics-modules/asyn.git
-  git_rev: R{{ pkg_ver | replace(".","-") }} 
+  url: https://github.com/epics-modules/asyn/archive/R{{ pkg_ver | replace(".","-") }}.tar.gz
 
 build:
   number: 0
