@@ -9,6 +9,10 @@ install -d $PREFIX/lib
 
 echo "INSTALL_LOCATION=${EPICS_BASE}" >> configure/CONFIG_SITE.local
 
+# remove readline dependency since system default and conda default readline versions differ.
+sed -i "s|^COMMANDLINE_LIBRARY = READLINE|#COMMANDLINE_LIBRARY = READLINE|" configure/os/CONFIG_SITE.Common.linux-x86
+sed -i "s|^COMMANDLINE_LIBRARY = READLINE|#COMMANDLINE_LIBRARY = READLINE|" configure/os/CONFIG_SITE.Common.linux-x86_64
+
 # EPICS assumes gcc suit has /usr/bin prefix.
 # If non-system gcc is used, e.g. rh-devtoolset,
 # find out its location /opt/rh/devtoolset-2/root/usr/bin.

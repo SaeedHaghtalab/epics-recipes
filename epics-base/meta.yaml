@@ -24,8 +24,8 @@ requirements:
     - python # [win]
     - m2w64-make # [win]
     - patch # [win]
-  host:
-    - readline
+  # host:
+  #   - readline
   run:
     - perl
 
